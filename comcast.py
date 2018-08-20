@@ -9,6 +9,10 @@ import requests
 import time
 
 logger = logging.getLogger(__name__)
+
+# Turn debug off and on
+logger.propagate = False
+
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('requests').setLevel(logging.ERROR)
 
@@ -51,10 +55,13 @@ assert res.status_code == 200
 
 js = json.loads(res.text)
 
-out = {
-    'raw': js,
-    'used': js['usageMonths'][-1]['homeUsage'],
-    'total': js['usageMonths'][-1]['allowableUsage'],
-    'unit': js['usageMonths'][-1]['unitOfMeasure'],
+used = js['usageMonths'][-1]['homeUsage']
+total = js['usageMonths'][-1]['allowableUsage']
+unit = js['usageMonths'][-1]['unitOfMeasure']
+
+ret = {
+  'used' : used,
+  'total': total,
+  'unit': unit
 }
-print(json.dumps(out))
+print(ret)
