@@ -2,7 +2,7 @@
 import json
 import logging
 import requests
-import re
+from re import search
 
 class ComcastData:
 
@@ -22,7 +22,7 @@ class ComcastData:
     res = self.session.get('https://customer.xfinity.com/oauth/force_connect/?continue=%23%2Fdevices')
     assert res.status_code == 200
 
-    m = re.search(r'<input type="hidden" name="reqId" value="(.*?)">', res.text)
+    m = search(r'<input type="hidden" name="reqId" value="(.*?)">', res.text)
     req_id = m.group(1)
     self.logger.debug("Found req_id = %r", req_id)
 
