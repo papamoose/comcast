@@ -1,6 +1,6 @@
 Comcast
 -------
-Originally written by Eric Swanson and modified to work as a python class.
+[Originally written by Eric Swanson](https://github.com/lachesis/comcast) and modified to work as a python class.
 It returns a hash with all data Comcast is willing to divulge.
 
 The example script shows you how one might deal with this information
