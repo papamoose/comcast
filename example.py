@@ -17,5 +17,4 @@ ret = {
   "unit" : unit
 }
 
-if (ret['used'] / ret['total']) >= 0.8:
-  print(dumps(ret))
+print(dumps(ret))
